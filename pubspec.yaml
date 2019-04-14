@@ -21,7 +21,6 @@ dependencies:
     sdk: flutter
   english_words: ^3.1.0
   cloud_firestore:
-  transparent_image:
   rxdart:
 
   # The following adds the Cupertino Icons font to your application.
@@ -48,7 +47,8 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
+  # assets:
+  #  - assets/Icon Pack/Class Icons and Augments/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -58,13 +58,13 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
 
-  fonts:
-    - family: High Tower Text
-      fonts:
-        - asset: assets/fonts/hightower.ttf
-    - family: Nyala
-      fonts:
-        - asset: assets/fonts/nyala.ttf
-    - family: Pirata One
-      fonts:
-        - asset: assets/fonts/PirataOne-Regular.ttf
+  # fonts:
+  #   - family: High Tower Text
+  #     fonts:
+  #       - asset: assets/fonts/hightower.ttf
+  #   - family: Nyala
+  #     fonts:
+  #       - asset: assets/fonts/nyala.ttf
+  #   - family: Pirata One
+  #     fonts:
+  #       - asset: assets/fonts/PirataOne-Regular.ttf

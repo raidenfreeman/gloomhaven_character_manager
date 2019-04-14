@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:transparent_image/transparent_image.dart';
 import 'dart:async';
 
 class FirestoreSlideshow extends StatefulWidget {
@@ -87,17 +88,17 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
               style: TextStyle(fontSize: 20, color: Colors.white)),
         ));
   }
-  AnimatedContainer _buildAnimatedCard2(blur, offset, top, slide) {
-    return AnimatedContainer(
-        duration: Duration(milliseconds: 500),
-        curve: Curves.easeOutQuint,
-        decoration: _buildDecoration(blur, offset, top, slide),
-        margin: EdgeInsets.only(top: top, bottom: 50, right: 30),
-        child: Center(
-          child: Text(slide['name'],
-              style: TextStyle(fontSize: 20, color: Colors.white)),
-        ));
-  }
+  // AnimatedContainer _buildAnimatedCard2(blur, offset, top, slide) {
+  //   return AnimatedContainer(
+  //       duration: Duration(milliseconds: 500),
+  //       curve: Curves.easeOutQuint,
+  //       decoration: _buildDecoration(blur, offset, top, slide),
+  //       margin: EdgeInsets.only(top: top, bottom: 50, right: 30),
+  //       child: Center(
+  //         child: Text(slide['name'],
+  //             style: TextStyle(fontSize: 20, color: Colors.white)),
+  //       ));
+  // }
 
   Decoration _buildDecoration(blur, offset, top, slide) {
     return BoxDecoration(
@@ -110,7 +111,11 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
           )
         ],
         image: DecorationImage(
-            fit: BoxFit.cover, image: NetworkImage(slide['image'])));
+            fit: BoxFit.cover,
+            image:
+                //  FadeInImage.assetNetwork(image: slide['image'],placeholder: 'assets/Icon Pack/Class Icons and Augments/brute.png',)
+                NetworkImage(slide['image']))
+                );
   }
 
   Widget _buildTagPage() {
@@ -120,7 +125,7 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Your Stories',
+          'Yourrr Characters',
           style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
         ),
         Text('FILTER', style: TextStyle(color: Colors.black26)),
