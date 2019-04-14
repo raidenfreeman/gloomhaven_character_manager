@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "703118506147",
+    "firebase_url": "https://gh-character-manager.firebaseio.com",
+    "project_id": "gh-character-manager",
+    "storage_bucket": "gh-character-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703118506147:android:83b0ce4050ed2c94",
+        "android_client_info": {
+          "package_name": "com.rfreeman.ghcharactermanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703118506147-r9hf8uosbh5snhkn25ulvnn6qk4uoccr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeGXl2Ld6KS2Fs5gb1vvdAEDFwkbk5Xng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703118506147-r9hf8uosbh5snhkn25ulvnn6qk4uoccr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
