@@ -16,7 +16,7 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
 
   @override
   void initState() {
-    queryFirestore();
+    queryFirestoreByTag();
     pageController.addListener(() {
       // Get the rounded to integer page
       // (because it returns fractions based on how much of the page is visible)
@@ -31,7 +31,7 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
     super.initState();
   }
 
-  Stream queryFirestore({String tag = 'favourites'}) {
+  Stream queryFirestoreByTag({String tag = 'favourites'}) {
     Query q =
         firestore.collection('characters').where('tags', arrayContains: tag);
 
@@ -41,6 +41,17 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
     setState(() {
       currentPage = 1;
       activeSlideTag = tag;
+    });
+  }
+
+  Stream queryFirestoreAll() {
+    Query q = firestore.collection('characters');
+    slides = q
+        .snapshots()
+        .map((list) => list.documents.map((document) => document.data));
+    setState(() {
+      currentPage = 1;
+      activeSlideTag = 'all';
     });
   }
 
@@ -74,20 +85,21 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
     final double offset = isActive ? 20 : 0;
     final double top = isActive ? 100 : 200;
     return _buildAnimatedCard(blur, offset, top, slide);
+    // return Stack(
+    //   children: <Widget>[
+    //     new Center(
+    //       child: FadeInImage.assetNetwork(
+    //         placeholder:
+    //             'assets/Icon Pack/Class Icons and Augments/scoundrel.png',
+    //         image: slide['image'],
+    //       ),
+    //     ),
+    //     _buildAnimatedCard(blur, offset, top, slide),
+    //   ],
+    // );
   }
 
   AnimatedContainer _buildAnimatedCard(blur, offset, top, slide) {
-    return AnimatedContainer(
-        duration: Duration(milliseconds: 500),
-        curve: Curves.easeOutQuint,
-        decoration: _buildDecoration(blur, offset, top, slide),
-        margin: EdgeInsets.only(top: top, bottom: 50, right: 30),
-        child: Center(
-          child: Text(slide['name'],
-              style: TextStyle(fontSize: 20, color: Colors.white)),
-        ));
-  }
-  AnimatedContainer _buildAnimatedCard2(blur, offset, top, slide) {
     return AnimatedContainer(
         duration: Duration(milliseconds: 500),
         curve: Curves.easeOutQuint,
@@ -130,11 +142,13 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
     ));
   }
 
-  _buildButton(tag) {
+  _buildButton(String tag) {
     Color color = tag == activeSlideTag ? Colors.purple : Colors.white;
+    var pressHandler = () => queryFirestoreByTag(tag: tag);
+    if (tag == 'all') {
+      pressHandler = () => queryFirestoreAll();
+    }
     return FlatButton(
-        color: color,
-        child: Text('#$tag'),
-        onPressed: () => queryFirestore(tag: tag));
+        color: color, child: Text('#$tag'), onPressed: pressHandler);
   }
 }
