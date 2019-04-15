@@ -20,7 +20,11 @@ dependencies:
   flutter:
     sdk: flutter
   english_words: ^3.1.0
+  firebase_core:
+  firebase_analytics:
+  firebase_auth: 0.8.2
   cloud_firestore:
+  google_sign_in:
   transparent_image:
   rxdart:
 
